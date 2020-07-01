@@ -16,12 +16,17 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->command->info('Users table seeded!');
+
+        $this->call(CompaniesTableSeeder::class);
+        $this->command->info('Companies table seeded!');
+
+        $this->call(UserCompaniesTableSeeder::class);
+        $this->command->info('UserCompanies table seeded!');
     }
 }
 
 
 class PeopleTableSeeder extends Seeder {
-
     public function run()
     {
         DB::table('people')->insert(array(
@@ -36,7 +41,6 @@ class PeopleTableSeeder extends Seeder {
 }
 
 class UsersTableSeeder extends Seeder {
-
     public function run()
     {
         DB::table('users')->insert([
@@ -46,6 +50,30 @@ class UsersTableSeeder extends Seeder {
                 'password' => \Hash::make('mario2020'),
                 'status' => 'active',
                 'type' => 'Superadmin'
+            ]
+        ]);
+    }
+}
+
+class CompaniesTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('companies')->insert([
+            [
+                'name' => 'Empresa demo',
+                'email' => 'info@empresa.com',
+            ]
+        ]);
+    }
+}
+
+class UserCompaniesTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('user_companies')->insert([
+            [
+                'user_id' => 1,
+                'company_id' => 1,
             ]
         ]);
     }
