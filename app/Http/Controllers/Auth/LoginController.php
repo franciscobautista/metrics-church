@@ -78,7 +78,7 @@ class LoginController extends Controller
                     'error' => 'Usuario o contraseña incorrectos'
                 ],201);
             }
-            return redirect('/');
+            return redirect('/')->withErrors(['Usuario o contraseña incorrectos']);;
         }
         
     }

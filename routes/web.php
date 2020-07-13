@@ -13,17 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']);
+});*/
+Route::get('/', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']);
 Route::view('/sign_up', 'auth/sign_up');
 Route::get('/logout','Auth\LoginController@logout');
 Route::post('/login','Auth\LoginController@authenticate');
+
 Route::post('/users','UsersController@store');
 Route::view('/500','errors.500');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home','DashboardController@index');
+    Route::get('/home','HomeController@index');
 
 });
