@@ -5,7 +5,7 @@
 	<head>
         <base href="/">
 		<meta charset="utf-8" />
-		<title>Metronic | Login Page 2</title>
+		<title>{{ env('APP_NAME') }} | Iniciar sesión</title>
 		<meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<!--begin::Fonts-->
@@ -60,7 +60,7 @@
 									<!--begin::Form group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
-										<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text" name="email" autocomplete="off" />
+										<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text" name="email" autocomplete="off" autofocus/>
 									</div>
 									<!--end::Form group-->
 									<!--begin::Form group-->

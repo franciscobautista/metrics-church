@@ -59,9 +59,6 @@ class LoginController extends Controller
             //Update last Access
             User::where('id',\Auth::id())->update(['last_access'=>date("Y-m-d H:i:s")]);
             //Get the associated company
-            $userCompany = UserCompany::Where('user_id', \Auth::id())->get();
-            if($userCompany != null)
-                Session::put('company_id',$userCompany->company_id);
             if ($request->ajax())
                 return response()->json([
                     'success' => true,
