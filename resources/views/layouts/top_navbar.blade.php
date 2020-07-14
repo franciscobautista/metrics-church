@@ -67,9 +67,9 @@
 								</div>
 								<!--end::User-->
 								<!--begin::Notifications-->
-								<div class="topbar-item">
+								<!--<div class="topbar-item">
 									<div class="btn btn-icon btn-sm btn-primary font-weight-bolder p-0" id="kt_quick_notifications_toggle">3</div>
-								</div>
+								</div> -->
 								<!--end::Notifications-->
 							</div>
 							<!--end::Topbar-->

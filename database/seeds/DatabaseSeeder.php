@@ -11,17 +11,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        
+        $this->call(CompaniesTableSeeder::class);
+        $this->command->info('Companies table seeded!');
+
+        $this->call(JobPositionsTableSeeder::class);
+        $this->command->info('JobPositions table seeded!');
+
         $this->call(PeopleTableSeeder::class);
         $this->command->info('People table seeded!');
 
         $this->call(UsersTableSeeder::class);
         $this->command->info('Users table seeded!');
 
-        $this->call(CompaniesTableSeeder::class);
-        $this->command->info('Companies table seeded!');
-
         $this->call(UserCompaniesTableSeeder::class);
         $this->command->info('UserCompanies table seeded!');
+
+        
     }
 }
 
@@ -34,7 +40,8 @@ class PeopleTableSeeder extends Seeder {
                 'id' => 1,
                 'first_name' => 'Mario',
                 'last_name' => 'Bautista',
-                'gender' => 'M'
+                'gender' => 'M',
+                'job_position_id' => 1
             ]
         ));
     }
@@ -49,7 +56,7 @@ class UsersTableSeeder extends Seeder {
                 'email' => 'fmariobh@gmail.com',
                 'password' => \Hash::make('mario2020'),
                 'status' => 'active',
-                'type' => 'Superadmin'
+                'type' => 'Superadmin',
             ]
         ]);
     }
@@ -75,6 +82,25 @@ class UserCompaniesTableSeeder extends Seeder {
                 'user_id' => 1,
                 'company_id' => 1,
             ]
+        ]);
+    }
+}
+class JobPositionsTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('job_positions')->insert([
+            [
+                'company_id' => 1,
+                'name' => 'Gerente'
+            ],
+            [
+                'company_id' => 1,
+                'name' => 'Mantenimiento'
+            ],
+            [
+                'company_id' => 1,
+                'name' => 'Producción'
+            ],
         ]);
     }
 }

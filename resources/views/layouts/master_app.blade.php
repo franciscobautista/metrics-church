@@ -254,8 +254,8 @@
 		<div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
 			<!--begin::Header-->
 			<div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
-				<h3 class="font-weight-bold m-0">User Profile
-				<small class="text-muted font-size-sm ml-2">12 messages</small></h3>
+				<h3 class="font-weight-bold m-0">Mi perfil
+				<!--<small class="text-muted font-size-sm ml-2">12 messages</small></h3> -->
 				<a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
 					<i class="ki ki-close icon-xs text-muted"></i>
 				</a>
@@ -270,8 +270,8 @@
 						<i class="symbol-badge bg-success"></i>
 					</div>
 					<div class="d-flex flex-column">
-						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">James Jones</a>
-						<div class="text-muted mt-1">Application Developer</div>
+						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{\Auth::user()->person->fullname}}</a>
+						<div class="text-muted mt-1">{{\Auth::user()->person->job_position->name}}</div>
 						<div class="navi mt-2">
 							<a href="#" class="navi-item">
 								<span class="navi-link p-0 pb-2">
@@ -288,10 +288,10 @@
 											<!--end::Svg Icon-->
 										</span>
 									</span>
-									<span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+									<span class="navi-text text-muted text-hover-primary">{{\Auth::user()->email}}</span>
 								</span>
 							</a>
-							<a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+							<a href="/logout" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Cerrar sesión</a>
 						</div>
 					</div>
 				</div>
@@ -302,7 +302,7 @@
 				<!--begin::Nav-->
 				<div class="navi navi-spacer-x-0 p-0">
 					<!--begin::Item-->
-					<a href="custom/apps/user/profile-1/personal-information.html" class="navi-item">
+					<a href="/profile" class="navi-item">
 						<div class="navi-link">
 							<div class="symbol symbol-40 bg-light mr-3">
 								<div class="symbol-label">
@@ -320,15 +320,14 @@
 								</div>
 							</div>
 							<div class="navi-text">
-								<div class="font-weight-bold">My Profile</div>
-								<div class="text-muted">Account settings and more
-								<span class="label label-light-danger label-inline font-weight-bold">update</span></div>
+								<div class="font-weight-bold">Mi perfil</div>
+								<div class="text-muted">Configuracion de tu cuenta</div>
 							</div>
 						</div>
 					</a>
 					<!--end:Item-->
 					<!--begin::Item-->
-					<a href="custom/apps/user/profile-3.html" class="navi-item">
+					<a href="/company" class="navi-item">
 						<div class="navi-link">
 							<div class="symbol symbol-40 bg-light mr-3">
 								<div class="symbol-label">
@@ -348,14 +347,14 @@
 								</div>
 							</div>
 							<div class="navi-text">
-								<div class="font-weight-bold">My Messages</div>
-								<div class="text-muted">Inbox and tasks</div>
+								<div class="font-weight-bold">Mi empresa</div>
+								<div class="text-muted">Configuración de la empresa</div>
 							</div>
 						</div>
 					</a>
 					<!--end:Item-->
 					<!--begin::Item-->
-					<a href="custom/apps/user/profile-2.html" class="navi-item">
+					<a href="/users" class="navi-item">
 						<div class="navi-link">
 							<div class="symbol symbol-40 bg-light mr-3">
 								<div class="symbol-label">
@@ -373,37 +372,13 @@
 								</div>
 							</div>
 							<div class="navi-text">
-								<div class="font-weight-bold">My Activities</div>
-								<div class="text-muted">Logs and notifications</div>
+								<div class="font-weight-bold">Usuarios</div>
+								<div class="text-muted">Administra usuarios</div>
 							</div>
 						</div>
 					</a>
 					<!--end:Item-->
-					<!--begin::Item-->
-					<a href="custom/apps/userprofile-1/overview.html" class="navi-item">
-						<div class="navi-link">
-							<div class="symbol symbol-40 bg-light mr-3">
-								<div class="symbol-label">
-									<span class="svg-icon svg-icon-md svg-icon-primary">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg-->
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,12 C19,12.5522847 18.5522847,13 18,13 L6,13 C5.44771525,13 5,12.5522847 5,12 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M7.5,5 C7.22385763,5 7,5.22385763 7,5.5 C7,5.77614237 7.22385763,6 7.5,6 L13.5,6 C13.7761424,6 14,5.77614237 14,5.5 C14,5.22385763 13.7761424,5 13.5,5 L7.5,5 Z M7.5,7 C7.22385763,7 7,7.22385763 7,7.5 C7,7.77614237 7.22385763,8 7.5,8 L10.5,8 C10.7761424,8 11,7.77614237 11,7.5 C11,7.22385763 10.7761424,7 10.5,7 L7.5,7 Z" fill="#000000" opacity="0.3" />
-												<path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#000000" />
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-								</div>
-							</div>
-							<div class="navi-text">
-								<div class="font-weight-bold">My Tasks</div>
-								<div class="text-muted">latest tasks and projects</div>
-							</div>
-						</div>
-					</a>
-					<!--end:Item-->
+				
 				</div>
 				<!--end::Nav-->
 				

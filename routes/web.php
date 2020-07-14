@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+
+//Auth::logout();
 Route::get('/', [ 'as' => 'login', 'uses' => 'Auth\LoginController@login']);
 Route::view('/sign_up', 'auth/sign_up');
 Route::get('/logout','Auth\LoginController@logout');

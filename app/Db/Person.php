@@ -15,6 +15,10 @@ class Person extends Model
     {
         return $this->hasMany(PersonPhone::class);
     }
+    function job_position()
+    {
+        return $this->hasOne(JobPosition::class,'id');   
+    }
     public function getFullNameAttribute()
     {
         return $this->first_name." ".$this->last_name;

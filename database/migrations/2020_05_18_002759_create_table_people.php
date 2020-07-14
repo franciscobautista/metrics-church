@@ -20,6 +20,12 @@ class CreateTablePeople extends Migration
             $table->string('mothers_last_name',100)->nullable();
             $table->string('photo',100)->nullable();
             $table->string('gender',10)->default('M')->nullable();
+            $table->integer('job_position_id')->unsigned()->nullable();
+            $table->foreign('job_position_id')
+                ->references('id')
+                ->on('job_positions')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

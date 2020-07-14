@@ -60,7 +60,7 @@
 									<!--begin::Form group-->
 									<div class="form-group">
 										<label class="font-size-h6 font-weight-bolder text-dark">Email</label>
-										<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text" name="email" autocomplete="off" autofocus/>
+										<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text" name="email" autocomplete="off" autofocus value="{{ old('email') }}"/>
 									</div>
 									<!--end::Form group-->
 									<!--begin::Form group-->

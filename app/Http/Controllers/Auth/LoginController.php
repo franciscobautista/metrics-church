@@ -47,7 +47,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
     public function authenticate(Request $request)
     {
         $email = $request->email;
@@ -75,7 +79,9 @@ class LoginController extends Controller
                     'error' => 'Usuario o contraseña incorrectos'
                 ],201);
             }
-            return redirect('/')->withErrors(['Usuario o contraseña incorrectos']);;
+            return redirect('/')
+                ->withInput($request->only('email'))
+                ->withErrors(['Usuario o contraseña incorrectos']);;
         }
         
     }
