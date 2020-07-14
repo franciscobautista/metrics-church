@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateTableMachines extends Migration
+class CreateTableJobPositions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateTableMachines extends Migration
      */
     public function up()
     {
-        Schema::create('machines', function (Blueprint $table) {
+        Schema::create('job_positions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',150)->nullable();
-            $table->string('description')->nullable();
             $table->integer("company_id")->unsigned();
             $table->foreign('company_id')
                 ->references('id')->on('companies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->string('name',100)->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +34,6 @@ class CreateTableMachines extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('machines');
+        Schema::dropIfExists('job_positions');
     }
 }

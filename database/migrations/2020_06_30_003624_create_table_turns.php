@@ -14,7 +14,7 @@ class CreateTableTurns extends Migration
     public function up()
     {
         Schema::create('turns', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name',150)->nullable();
             $table->string('description')->nullable();
             $table->integer("company_id")->unsigned();
