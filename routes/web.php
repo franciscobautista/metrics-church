@@ -25,5 +25,10 @@ Route::view('/500','errors.500');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home','HomeController@index');
+    Route::view('/profile','users.profile');
+    Route::post('/profile','UsersController@update');
 
+    Route::get('/users','UsersController@index');
+    Route::get('/users/edit/{id}','UsersController@edit');
+    Route::get('/company','CompaniesController@index');
 });
