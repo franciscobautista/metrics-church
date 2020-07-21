@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(UserCompany::class);
     }
 
+    function company()
+    {
+        return $this->hasOne(UserCompany::class);
+    }
+
     /**
      * Verifica si el usuario logueado cuenta con un rol
      *

@@ -17,11 +17,11 @@ class Person extends Model
     }
     function job_position()
     {
-        return $this->hasOne(JobPosition::class,'id');   
+        return $this->hasOne(JobPosition::class,'id','job_position_id');   
     }
     public function getFullNameAttribute()
     {
-        return $this->first_name." ".$this->last_name;
+        return $this->first_name." ".$this->last_name." ".$this->mothers_last_name;
     }
     public function getLettersNameAttribute()
     {

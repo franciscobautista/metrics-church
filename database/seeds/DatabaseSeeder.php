@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->command->info('Users table seeded!');
 
-        $this->call(UserCompaniesTableSeeder::class);
-        $this->command->info('UserCompanies table seeded!');
+        $this->call(CompanyUsersTableSeeder::class);
+        $this->command->info('CompanyUsers table seeded!');
 
         
     }
@@ -74,10 +74,10 @@ class CompaniesTableSeeder extends Seeder {
     }
 }
 
-class UserCompaniesTableSeeder extends Seeder {
+class CompanyUsersTableSeeder extends Seeder {
     public function run()
     {
-        DB::table('user_companies')->insert([
+        DB::table('company_users')->insert([
             [
                 'user_id' => 1,
                 'company_id' => 1,

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Db\Person;
 use App\Db\User;
+use App\Db\CompanyUser;
 use App\Db\JobPosition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users_company = CompanyUser::Where('company_id',$this->company_id)->With('user.person.job_position')->get();
+        return view('users.index', compact('users_company'));
     }
 
     /**
@@ -65,10 +67,9 @@ class UsersController extends Controller
         $person = Person::create($data);
         $data['person_id'] = $person->id;
         $data['recovery_password'] = uniqid();
-        User::create($data);
+        $user = User::create($data);
 
-        //$request->session()->flash('message', 'Usuario agregado correctamente!');
-        //\Log::info(Session::get('message') );
+        CompanyUser::create(['user_id'=> $user->id, 'company_id' => $this->company_id]);
         return redirect('/users')->with('message', 'Usuario agregado correctamente!');
     }
 
@@ -115,6 +116,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect('/users')->with('message', 'Usuario eliminado correctamente!');
     }
 }

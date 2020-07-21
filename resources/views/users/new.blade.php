@@ -83,7 +83,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Nombre</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" name="first_name" type="text" />
+                                                <input class="form-control form-control-lg form-control-solid" name="first_name" type="text" value="{{ old('first_name') }}"/>
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -91,7 +91,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Apellido Paterno</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" type="text" name="last_name" />
+                                                <input class="form-control form-control-lg form-control-solid" type="text" name="last_name" value="{{ old('last_name') }}"/>
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -99,17 +99,17 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Apellido Materno</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" type="text" name="mothers_last_name" />
+                                                <input class="form-control form-control-lg form-control-solid" type="text" name="mothers_last_name" value="{{ old('mothers_last_name') }}" />
                                             </div>
                                         </div>
                                         <!--end::Group-->
                                         <!--begin::Group-->
                                         <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">Posición</label>
+                                            <label class="col-form-label col-3 text-lg-right text-left">Posición </label>
                                             <div class="col-9">
                                                  <select class="form-control form-control-lg form-control-solid" name="job_position_id">
                                                     @foreach($job_positions as $item)
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    <option value="{{$item->id}}" {{ old('job_position_id') == $item->id ? "selected" : '' }}>{{$item->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -126,7 +126,7 @@
                                                             <i class="la la-at"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder="Email" />
+                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder="Email" value="{{ old('email') }}"/>
                                                 </div>
                                             </div>
                                         </div>
