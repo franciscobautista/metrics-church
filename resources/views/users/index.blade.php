@@ -1,6 +1,5 @@
 @extends('layouts.master_app')
-@section('title') Solicitudes @endsection
-
+@section('title') Usuarios @endsection
 
 @section('css')
 
@@ -22,7 +21,7 @@
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold my-2 p-0">
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">Inici</a>
+                            <a href="/" class="text-muted">Inicio</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="" class="text-muted">Usuarios</a>
@@ -36,7 +35,7 @@
             <!--begin::Toolbar-->
             <div class="d-flex align-items-center">
                 <!--begin::Button-->
-                <a href="#" class="btn btn-fixed-height btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
+                <a href="/users/new" class="btn btn-fixed-height btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
                 <span class="svg-icon svg-icon-success svg-icon-lg">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -65,7 +64,17 @@
                 
                 <!--begin::Content-->
                 <div class="flex-row-fluid ml-lg-8">
-                    
+                    @if(session('message'))
+                    <div class="alert alert-custom alert-notice alert-light-success fade show" role="alert">
+                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                        <div class="alert-text"> {{session('message')}}</div>
+                        <div class="alert-close">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                    @endif
                     <!--begin::Advance Table Widget 5-->
                     <div class="card card-custom gutter-b">
                         <!--begin::Header-->

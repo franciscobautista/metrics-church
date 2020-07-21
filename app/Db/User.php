@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'person_id','username', 'email', 'password',
+        'person_id','username', 'email', 'password', 'recovery_password'
     ];
 
     /**
@@ -41,6 +41,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Person::class);
     }
+    
+    function companies()
+    {
+        return $this->hasMany(UserCompany::class);
+    }
 
     /**
      * Verifica si el usuario logueado cuenta con un rol
@@ -52,5 +57,10 @@ class User extends Authenticatable
             return true;
         else
             return false;
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = \Hash::make($value);
     }
 }

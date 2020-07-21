@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-    protected $fillable = ['first_name','last_name','mothers_last_name','photo'];
+    protected $fillable = ['first_name','last_name','mothers_last_name','photo','job_position_id'];
     public function emails()
     {
         return $this->hasMany(PersonEmail::class);
