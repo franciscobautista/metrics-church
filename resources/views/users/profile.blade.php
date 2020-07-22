@@ -104,7 +104,7 @@
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form" method="POST" action="/profile/{{Auth::id()}}" enctype="multipart/form-data">
+						<form class="form" method="POST" action="/users/update/{{Auth::id()}}" enctype="multipart/form-data">
 							<!--begin::Body-->
 							<div class="card-body">
 								
@@ -126,9 +126,9 @@
 											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancelar subida de foto">
 												<i class="ki ki-bold-close icon-xs text-muted"></i>
 											</span>
-											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Eliminar foto">
+											<!--<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Eliminar foto">
 												<i class="ki ki-bold-close icon-xs text-muted"></i>
-											</span>
+											</span> -->
 										</div>
 										<span class="form-text text-muted">Archivos permitidos: png, jpg, jpeg</span>
 									</div>

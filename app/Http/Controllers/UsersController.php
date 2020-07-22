@@ -69,7 +69,7 @@ class UsersController extends Controller
         $user = User::create($data);
 
         CompanyUser::create(['user_id'=> $user->id, 'company_id' => $this->company_id]);
-        return redirect('/users')->with('message', 'Usuario agregado correctamente!');
+        return redirect('/users')->with('success', 'Usuario agregado correctamente!');
     }
 
     /**
@@ -89,14 +89,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
-        return view('users.edit',compact($user) );
+        $job_positions = JobPosition::Where('company_id',$this->company_id)->get();
+        return view('users.edit',compact('user','job_positions') );
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update profileUser
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -115,8 +115,9 @@ class UsersController extends Controller
         }
         $user->person->update($data);
 
-        return redirect('/profile')->with('success','Datos actualizados correctamente');
+        return back()->with('success','Datos actualizados correctamente');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -127,7 +128,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect('/users')->with('message', 'Usuario eliminado correctamente!');
+        return redirect('/users')->with('success', 'Usuario eliminado correctamente!');
     }
 
     /**

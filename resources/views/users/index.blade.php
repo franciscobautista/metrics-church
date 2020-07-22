@@ -63,17 +63,8 @@
                 
                 <!--begin::Content-->
                 <div class="flex-row-fluid ml-lg-8">
-                    @if(session('success'))
-                    <div class="alert alert-custom alert-notice alert-light-success fade show" role="alert">
-                        <div class="alert-icon"><i class="flaticon2-protected"></i></div>
-                        <div class="alert-text"> {{session('success')}}</div>
-                        <div class="alert-close">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                    @endif
+                    @include('partials.errors')
+                    @include('partials.success')
                     <!--begin::Advance Table Widget 5-->
                     <div class="card card-custom gutter-b">
                         <!--begin::Header-->
