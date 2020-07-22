@@ -16,6 +16,11 @@
 		<link href="/app/assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
+
+		<!--begin::Page Vendors Styles(used by this page) -->
+        @yield('css')
+		<!--end::Page Vendors Styles -->
+
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 	</head>
@@ -414,6 +419,11 @@
 		<script src="/app/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5"></script>
 		<script src="/app/assets/js/scripts.bundle.js?v=7.0.5"></script>
 		<!--end::Global Theme Bundle-->
+
+		<!--begin::Page Scripts(used by this page) -->
+		@yield('js')
+		<!--end::Page Scripts -->
+		
 	</body>
 	<!--end::Body-->
 </html>

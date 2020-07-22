@@ -2,7 +2,6 @@
 @section('title') Usuarios @endsection
 
 @section('css')
-
 @endsection
 
 @section('content')
@@ -64,10 +63,10 @@
                 
                 <!--begin::Content-->
                 <div class="flex-row-fluid ml-lg-8">
-                    @if(session('message'))
+                    @if(session('success'))
                     <div class="alert alert-custom alert-notice alert-light-success fade show" role="alert">
-                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
-                        <div class="alert-text"> {{session('message')}}</div>
+                        <div class="alert-icon"><i class="flaticon2-protected"></i></div>
+                        <div class="alert-text"> {{session('success')}}</div>
                         <div class="alert-close">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true"><i class="ki ki-close"></i></span>
@@ -111,6 +110,7 @@
                                                 <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$item->user->last_access}}</span>
                                             </td>
                                             <td class="pr-0 text-right">
+                                                @if($item->user->type!='Superadmin') 
                                                 <a href="/users/permissions/{{$item->user->id}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                                     <span class="svg-icon svg-icon-md svg-icon-primary">
                                                         <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
@@ -150,6 +150,7 @@
                                                         <!--end::Svg Icon-->
                                                     </span>
                                                 </a>
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach

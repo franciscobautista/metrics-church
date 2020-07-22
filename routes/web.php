@@ -26,7 +26,7 @@ Route::view('/500','errors.500');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home','HomeController@index');
     Route::view('/profile','users.profile');
-    Route::post('/profile','UsersController@update');
+    Route::patch('/profile/{user}','UsersController@update');
 
     Route::get('/users','UsersController@index');
     Route::get('/users/delete/{id}','UsersController@destroy');

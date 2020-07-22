@@ -41,7 +41,8 @@ class PeopleTableSeeder extends Seeder {
                 'first_name' => 'Mario',
                 'last_name' => 'Bautista',
                 'gender' => 'M',
-                'job_position_id' => 1
+                'job_position_id' => 1,
+                'photo' => 'blank.png'
             ]
         ));
     }

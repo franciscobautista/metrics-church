@@ -18,7 +18,7 @@ class CreateTablePeople extends Migration
             $table->string('first_name',150)->nullable();
             $table->string('last_name',100)->nullable();
             $table->string('mothers_last_name',100)->nullable();
-            $table->string('photo',100)->nullable();
+            $table->string('photo',100)->default('blank.png')->nullable();
             $table->string('gender',10)->default('M')->nullable();
             $table->integer('job_position_id')->unsigned()->nullable();
             $table->foreign('job_position_id')

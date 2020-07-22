@@ -67,8 +67,8 @@
                             </button>
                         </div>
                     </div>
-                        
                     @endif
+                    
                     <form class="form" id="kt_form" method="POST" action="/users">
                         @csrf
                         <div class="tab-content">

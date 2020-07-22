@@ -44,12 +44,12 @@ class User extends Authenticatable
     
     function companies()
     {
-        return $this->hasMany(UserCompany::class);
+        return $this->hasMany(CompanyUser::class);
     }
 
     function company()
     {
-        return $this->hasOne(UserCompany::class);
+        return $this->hasOne(CompanyUser::class);
     }
 
     /**

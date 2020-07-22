@@ -103,9 +103,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+        $data = request()->all();
+        $user->update($data);
+
+        if(request()->hasFile('photo') )
+        {
+            $fileName=rand(1,99).'-'.request()->photo->getClientOriginalName();
+            request()->photo->move(storage_path('app/photos'), $fileName);
+            $data['photo'] = $fileName;
+        }
+        $user->person->update($data);
+
+        return redirect('/profile')->with('success','Datos actualizados correctamente');
     }
 
     /**
