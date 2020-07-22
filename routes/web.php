@@ -25,7 +25,7 @@ Route::view('/500','errors.500');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home','HomeController@index');
-    Route::view('/profile','users.profile');
+    Route::get('/profile/{section?}','UsersController@show');
     Route::patch('/profile/{user}','UsersController@update');
 
     Route::get('/users','UsersController@index');
@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/edit/{id}','UsersController@edit');
     Route::get('/users/new','UsersController@create');
     Route::post('/users','UsersController@store');
+    Route::post('/users/password','UsersController@changePassword');
 
     Route::get('/company','CompaniesController@index');
 });

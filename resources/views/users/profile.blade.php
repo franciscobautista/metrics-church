@@ -1,4 +1,4 @@
-ç@extends('layouts.master_app')
+@extends('layouts.master_app')
 @section('title') Mi Perfil @endsection
 
 @section('css')
@@ -22,13 +22,12 @@
 							<!--begin::User-->
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-									<div class="symbol-label" style="background-image:url('/public/app/photos/{{Auth::user()->person->photo}}')"></div>
+									<div class="symbol-label" style="background-image:url('/storage/photos/{{Auth::user()->person->photo}}')"></div>
 									<i class="symbol-badge bg-success"></i>
 								</div>
 								<div>
 									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{Auth::user()->person->first_name}} {{Auth::user()->person->last_name}}</a>
 									<div class="text-muted">{{Auth::user()->person->job_position->name}}</div>
-									
 								</div>
 							</div>
 							<!--end::User-->
@@ -45,7 +44,7 @@
 							<div class="navi navi-bold navi-hover navi-active navi-link-rounded">
 							
 								<div class="navi-item mb-2">
-									<a href="custom/apps/profile/profile-1/personal-information.html" class="navi-link py-4 active">
+									<a href="/profile" class="navi-link py-4 @if($section==null) active @endif">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
@@ -64,7 +63,7 @@
 								</div>
 							
 								<div class="navi-item mb-2">
-									<a href="custom/apps/profile/profile-1/change-password.html" class="navi-link py-4">
+									<a href="/profile/password" class="navi-link py-4  @if($section=='password') active @endif ">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg-->
@@ -80,9 +79,6 @@
 											</span>
 										</span>
 										<span class="navi-text font-size-lg">Cambiar contraseña</span>
-										<span class="navi-label">
-											<span class="label label-light-danger label-rounded font-weight-bold">5</span>
-										</span>
 									</a>
 								</div>
 								
@@ -94,6 +90,7 @@
 					<!--end::Profile Card-->
 				</div>
 				<!--end::Aside-->
+				@if($section==null)
 				<!--begin::Content-->
 				<div class="flex-row-fluid ml-lg-8">
 					<!--begin::Card-->
@@ -110,46 +107,17 @@
 						<form class="form" method="POST" action="/profile/{{Auth::id()}}" enctype="multipart/form-data">
 							<!--begin::Body-->
 							<div class="card-body">
-								@if ($errors->any())
-								<div class="alert alert-custom alert-notice alert-light-primary fade show mb-5" role="alert">
-									<div class="alert-icon">
-										<i class="flaticon-warning"></i>
-									</div>
-									<div class="alert-text">
-										<ul>
-										@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-										@endforeach
-										</ul>
-									</div>
-									<div class="alert-close">
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-											<span aria-hidden="true">
-												<i class="ki ki-close"></i>
-											</span>
-										</button>
-									</div>
-								</div>
-								@endif
-								@if(session('message'))
-								<div class="alert alert-custom alert-notice alert-light-success fade show" role="alert">
-									<div class="alert-icon"><i class="flaticon2-protected"></i></div>
-									<div class="alert-text"> {{session('message')}}</div>
-									<div class="alert-close">
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-											<span aria-hidden="true"><i class="ki ki-close"></i></span>
-										</button>
-									</div>
-								</div>
-								@endif
+								
+								@include('partials.errors')
+								@include('partials.success')
 
 								@csrf
 								@method('PATCH')
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label text-right">Foto</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(/public/app/photos/{{Auth::user()->person->photo}})">
-											<div class="image-input-wrapper" style="background-image: url(/public/app/photos/{{Auth::user()->person->photo}})"></div>
+										<div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(/storage/photos/{{Auth::user()->person->photo}})">
+											<div class="image-input-wrapper" style="background-image: url(/storage/photos/{{Auth::user()->person->photo}})"></div>
 											<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar foto">
 												<i class="fa fa-pen icon-sm text-muted"></i>
 												<input type="file" name="photo" accept=".png, .jpg, .jpeg" />
@@ -204,7 +172,7 @@
 									</div>
 								</div> -->
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label text-right">Email Address</label>
+									<label class="col-xl-3 col-lg-3 col-form-label text-right">Email</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
 											<div class="input-group-prepend">
@@ -238,6 +206,61 @@
 					</div>
 				</div>
 				<!--end::Content-->
+				@endif
+
+				@if($section=='password')
+				<!--begin::Content-->
+				<div class="flex-row-fluid ml-lg-8">
+					<!--begin::Card-->
+					<div class="card card-custom">
+						<!--begin::Header-->
+						<div class="card-header py-3">
+							<div class="card-title align-items-start flex-column">
+								<h3 class="card-label font-weight-bolder text-dark">Cambiar contraseña</h3>
+								<span class="text-muted font-weight-bold font-size-sm mt-1">Cambiar la contraseña de tu cuenta</span>
+							</div>
+						</div>
+						<!--end::Header-->
+
+						
+
+						<!--begin::Form-->
+						<form class="form" method="POST" action='/users/password'>
+							
+							<div class="card-body">
+								@include('partials.errors')
+								@include('partials.error')
+								@include('partials.success')
+								@csrf
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label text-alert">Contraseña actual</label>
+									<div class="col-lg-9 col-xl-6">
+										<input type="password" class="form-control form-control-lg form-control-solid mb-2" name="current_password" placeholder="Introduce tu contraseña actual" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label text-alert">Nueva contraseña</label>
+									<div class="col-lg-9 col-xl-6">
+										<input type="password" class="form-control form-control-lg form-control-solid" name="password" placeholder="Nueva contraseña" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label text-alert">Confirma tu contraseña</label>
+									<div class="col-lg-9 col-xl-6">
+										<input type="password" class="form-control form-control-lg form-control-solid" name="password_confirmation" placeholder="Introduce tu nueva contraseña" />
+									</div>
+								</div>
+							</div>
+
+							<div class="card-footer">
+								<button type="submit" class="btn btn-success mr-2">Actualizar contraseña</button>
+							</div>
+						</form>
+						<!--end::Form-->
+					</div>
+				</div>
+				<!--end::Content-->
+				@endif
 			</div>
 			<!--end::Profile Personal Information-->
 		</div>

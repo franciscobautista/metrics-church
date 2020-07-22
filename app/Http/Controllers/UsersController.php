@@ -58,7 +58,6 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        \Log::info($data);
         $validatedData = $request->validate([
             'email' => 'required|unique:users|max:255',
             'first_name' => 'required',
@@ -79,9 +78,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($section=null)
     {
-        //
+        return view('users.profile',compact('section'));
     }
 
     /**
@@ -111,7 +110,7 @@ class UsersController extends Controller
         if(request()->hasFile('photo') )
         {
             $fileName=rand(1,99).'-'.request()->photo->getClientOriginalName();
-            request()->photo->move(storage_path('app/photos'), $fileName);
+            request()->photo->move(storage_path('/app/public/photos'), $fileName);
             $data['photo'] = $fileName;
         }
         $user->person->update($data);
@@ -129,5 +128,28 @@ class UsersController extends Controller
     {
         User::destroy($id);
         return redirect('/users')->with('message', 'Usuario eliminado correctamente!');
+    }
+
+    /**
+     * Change password
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(Request $request)
+    {
+        if(\Hash::check($request->current_password, \Auth::user()->password) )
+        {
+            $request->validate([
+                'password' => 'required|confirmed|min:6',
+            ]);
+            User::Where('id',\Auth::id())->update(['password'=>\Hash::make($request->password)]);
+            return redirect('/profile/password')->with('success','Contraseña actualizada correctamente');
+        }
+        else
+            return redirect('/profile/password')->with('error','Tu contraseña actual es incorrecta');
+
+
+        
     }
 }
