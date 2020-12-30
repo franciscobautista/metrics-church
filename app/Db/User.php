@@ -69,19 +69,15 @@ class User extends Authenticatable
         $this->attributes['password'] = \Hash::make($value);
     }
 
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class)->withTimestamps();
-    }
 
     public function savePermission($permission)
     {
                           //->attach
         $this->permissions()->sync($permission, false);
     }
-
+    /*
     public function hasPermission()
     {
         return $this->permissions->flatten()->pluck('name')->unique();
-    }
+    } */
 }

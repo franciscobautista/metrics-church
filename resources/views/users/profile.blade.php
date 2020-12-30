@@ -27,7 +27,7 @@
 								</div>
 								<div>
 									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{Auth::user()->person->first_name}} {{Auth::user()->person->last_name}}</a>
-									<div class="text-muted">{{Auth::user()->person->job_position->name}}</div>
+									<div class="text-muted"></div>
 								</div>
 							</div>
 							<!--end::User-->
