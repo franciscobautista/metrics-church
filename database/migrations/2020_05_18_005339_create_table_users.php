@@ -21,7 +21,6 @@ class CreateTableUsers extends Migration
                 ->on('people')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string('type',50)->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('password', 80)->nullable();
             $table->string('username',80)->nullable();

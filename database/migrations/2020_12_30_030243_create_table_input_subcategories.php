@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUserPermissions extends Migration
+class CreateTableInputSubcategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateTableUserPermissions extends Migration
      */
     public function up()
     {
-        Schema::create('user_permissions', function (Blueprint $table) {
+        Schema::create('input_subcategories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("user_id")->unsigned();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->integer("input_id")->unsigned();
+            $table->foreign('input_id')
+                ->references('id')->on('inputs')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer("permission_id")->unsigned();
-            $table->foreign('permission_id')
-                ->references('id')->on('permissions')
+            $table->integer("subcategory_id")->unsigned();
+            $table->foreign('subcategory_id')
+                ->references('id')->on('subcategories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->timestamps();
+            $table->double('value', 16,2)->nullable();
         });
     }
 
@@ -36,6 +36,6 @@ class CreateTableUserPermissions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_permissions');
+        Schema::dropIfExists('input_subcategories');
     }
 }

@@ -107,10 +107,8 @@
 						<form class="form" method="POST" action="/users/update/{{Auth::id()}}" enctype="multipart/form-data">
 							<!--begin::Body-->
 							<div class="card-body">
-								
 								@include('partials.errors')
 								@include('partials.success')
-
 								@csrf
 								@method('PATCH')
 								<div class="form-group row">

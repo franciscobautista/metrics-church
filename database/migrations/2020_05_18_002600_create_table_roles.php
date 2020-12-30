@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCompanyUsers extends Migration
+class CreateTableRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreateTableCompanyUsers extends Migration
      */
     public function up()
     {
-        Schema::create('company_users', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("user_id")->unsigned();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->integer("company_id")->unsigned();
             $table->foreign('company_id')
                 ->references('id')->on('companies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->string('name',100)->nullable();
+            $table->string('description')->nullable();
+            $table->string('special',20)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -36,6 +35,6 @@ class CreateTableCompanyUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_users');
+        Schema::dropIfExists('roles');
     }
 }

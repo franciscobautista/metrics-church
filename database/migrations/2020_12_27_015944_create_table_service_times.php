@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableTurns extends Migration
+class CreateTableServiceTimes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,22 @@ class CreateTableTurns extends Migration
      */
     public function up()
     {
-        Schema::create('turns', function (Blueprint $table) {
+        Schema::create('service_times', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',150)->nullable();
-            $table->string('description')->nullable();
+            $table->string('day',25)->nullable();
+            $table->string('hour')->nullable();
+            $table->integer("service_type_id")->unsigned();
+            $table->foreign('service_type_id')
+                ->references('id')->on('service_types')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->integer("company_id")->unsigned();
             $table->foreign('company_id')
                 ->references('id')->on('companies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +39,6 @@ class CreateTableTurns extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turns');
+        Schema::dropIfExists('service_times');
     }
 }

@@ -63,7 +63,7 @@
                 
                 <!--begin::Content-->
                 <div class="flex-row-fluid ml-lg-8">
-                    @include('partials.errors')
+                    
                     @include('partials.success')
                     <!--begin::Advance Table Widget 5-->
                     <div class="card card-custom gutter-b">
@@ -141,6 +141,8 @@
                                                         <!--end::Svg Icon-->
                                                     </span>
                                                 </a>
+                                                @else
+                                                    SuperAdmin
                                                 @endif
                                             </td>
                                         </tr>

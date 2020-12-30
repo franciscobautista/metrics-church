@@ -271,7 +271,7 @@
 				<!--begin::Header-->
 				<div class="d-flex align-items-center mt-5">
 					<div class="symbol symbol-100 mr-5">
-						<div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+						<div class="symbol-label" style="background-image:url('/storage/photos/{{Auth::user()->person->photo}}')"></div>
 						<i class="symbol-badge bg-success"></i>
 					</div>
 					<div class="d-flex flex-column">
@@ -358,6 +358,7 @@
 						</div>
 					</a>
 					<!--end:Item-->
+					@can('administrador')
 					<!--begin::Item-->
 					<a href="/users" class="navi-item">
 						<div class="navi-link">
@@ -383,7 +384,8 @@
 						</div>
 					</a>
 					<!--end:Item-->
-				
+					@endcan
+
 				</div>
 				<!--end::Nav-->
 				

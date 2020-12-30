@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableMachines extends Migration
+class CreateTableInputs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateTableMachines extends Migration
      */
     public function up()
     {
-        Schema::create('machines', function (Blueprint $table) {
+        Schema::create('inputs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',150)->nullable();
-            $table->string('description')->nullable();
-            $table->integer("company_id")->unsigned();
-            $table->foreign('company_id')
-                ->references('id')->on('companies')
+            $table->timestamp('date')->nullable();
+            $table->integer("service_time_id")->unsigned();
+            $table->foreign('service_time_id')
+                ->references('id')->on('service_times')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->text('observations')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateTableMachines extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('machines');
+        Schema::dropIfExists('inputs');
     }
 }

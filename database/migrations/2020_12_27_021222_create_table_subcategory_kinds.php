@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTableCompanyUsers extends Migration
+class CreateTableSubcategoryKinds extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateTableCompanyUsers extends Migration
      */
     public function up()
     {
-        Schema::create('company_users', function (Blueprint $table) {
+        Schema::create('subcategory_kinds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("user_id")->unsigned();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->integer("company_id")->unsigned();
             $table->foreign('company_id')
                 ->references('id')->on('companies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,6 +32,6 @@ class CreateTableCompanyUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_users');
+        Schema::dropIfExists('subcategory_kinds');
     }
 }
