@@ -17,9 +17,9 @@ class CreateTableCategories extends Migration
             $table->increments('id');
             $table->string('name',150)->nullable();
             //$table->string('format')->nullable();
-            $table->integer("company_id")->unsigned();
-            $table->foreign('company_id')
-                ->references('id')->on('companies')
+            $table->integer("organization_id")->unsigned();
+            $table->foreign('organization_id')
+                ->references('id')->on('organizations')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->softDeletes();

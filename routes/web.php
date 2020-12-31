@@ -35,5 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users','UsersController@store');
     Route::post('/users/password','UsersController@changePassword');
 
+    Route::get('/settings/{section}','OrganizationsController@edit');
+
     Route::get('/company','CompaniesController@index');
 });

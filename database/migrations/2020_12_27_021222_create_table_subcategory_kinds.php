@@ -16,9 +16,9 @@ class CreateTableSubcategoryKinds extends Migration
         Schema::create('subcategory_kinds', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',100)->nullable();
-            $table->integer("company_id")->unsigned()->nullable();
-            $table->foreign('company_id')
-                ->references('id')->on('companies')
+            $table->integer("organization_id")->unsigned();
+            $table->foreign('organization_id')
+                ->references('id')->on('organizations')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->softDeletes();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCompanies extends Migration
+class CreateTableOrganizations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableCompanies extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',150)->nullable();
             $table->string('logo',30)->default("logo.png")->nullable();
@@ -30,6 +30,6 @@ class CreateTableCompanies extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('organizations');
     }
 }

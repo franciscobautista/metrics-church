@@ -23,9 +23,9 @@ class CreateTableServiceTimes extends Migration
                 ->references('id')->on('service_types')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer("company_id")->unsigned();
-            $table->foreign('company_id')
-                ->references('id')->on('companies')
+            $table->integer("organization_id")->unsigned();
+            $table->foreign('organization_id')
+                ->references('id')->on('organizations')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->softDeletes();

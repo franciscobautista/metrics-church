@@ -42,14 +42,14 @@ class User extends Authenticatable
         return $this->belongsTo(Person::class);
     }
     
-    function companies()
+    function organizations()
     {
-        return $this->hasMany(CompanyUser::class);
+        return $this->hasMany(OrganizationUser::class);
     }
 
-    function company()
+    function organization()
     {
-        return $this->hasOne(CompanyUser::class);
+        return $this->hasOne(OrganizationUser::class);
     }
 
     /**

@@ -32,7 +32,7 @@
 		<div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
 			<!--begin::Logo-->
 			<a href="index.html">
-				<img alt="Logo" src="assets/media/logos/logo-letter-9.png" class="max-h-30px" />
+				<img alt="Logo" src="/app/assets/media/logos/logo-letter-9.png" class="max-h-30px" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -170,7 +170,7 @@
 					</a>
 					<!--end:Item-->
 					<!--begin::Item-->
-					<a href="/company" class="navi-item">
+					<a href="/settings/organization" class="navi-item">
 						<div class="navi-link">
 							<div class="symbol symbol-40 bg-light mr-3">
 								<div class="symbol-label">
@@ -190,15 +190,15 @@
 								</div>
 							</div>
 							<div class="navi-text">
-								<div class="font-weight-bold">Mi empresa</div>
-								<div class="text-muted">Configuración de la empresa</div>
+								<div class="font-weight-bold">Mi campus</div>
+								<div class="text-muted">Configuración de tu campos</div>
 							</div>
 						</div>
 					</a>
 					<!--end:Item-->
 					@can('administrador')
 					<!--begin::Item-->
-					<a href="/users" class="navi-item">
+					<a href="/settings/users" class="navi-item">
 						<div class="navi-link">
 							<div class="symbol symbol-40 bg-light mr-3">
 								<div class="symbol-label">

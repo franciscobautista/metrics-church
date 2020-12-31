@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        $this->call(CompaniesTableSeeder::class);
-        $this->command->info('Companies table seeded!');
+        $this->call(OrganizationsTableSeeder::class);
+        $this->command->info('Organizations table seeded!');
 
         $this->call(RolesTableSeeder::class);
         $this->command->info('Roles table seeded!');
@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->command->info('Users table seeded!');
 
-        $this->call(CompanyUsersTableSeeder::class);
-        $this->command->info('CompanyUsers table seeded!');
+        $this->call(OrganizationUsersTableSeeder::class);
+        $this->command->info('OrganizationUsers table seeded!');
 
     }
 }
@@ -60,10 +60,10 @@ class UsersTableSeeder extends Seeder {
     }
 }
 
-class CompaniesTableSeeder extends Seeder {
+class OrganizationsTableSeeder extends Seeder {
     public function run()
     {
-        DB::table('companies')->insert([
+        DB::table('organizations')->insert([
             [
                 'name' => 'Company demo',
                 'email' => 'info@empresa.com',
@@ -72,13 +72,14 @@ class CompaniesTableSeeder extends Seeder {
     }
 }
 
-class CompanyUsersTableSeeder extends Seeder {
+class OrganizationUsersTableSeeder extends Seeder {
     public function run()
     {
-        DB::table('company_users')->insert([
+        DB::table('organization_users')->insert([
             [
                 'user_id' => 1,
-                'company_id' => 1,
+                'organization_id' => 1,
+                'rol_id' => 1
             ]
         ]);
     }
@@ -88,25 +89,20 @@ class RolesTableSeeder extends Seeder {
     {
         DB::table('roles')->insert([
             [
-                'company_id' => 1,
-                'name' => 'Superadmin',
+                'organization_id' => 1,
+                'name' => 'Admin',
                 'special' => 'all-access'
             ],
             [
-                'company_id' => 1,
-                'name' => 'Gerente',
+                'organization_id' => 1,
+                'name' => 'Staff',
                 'special' => null
             ],
             [
-                'company_id' => 1,
-                'name' => 'Mantenimiento',
+                'organization_id' => 1,
+                'name' => 'Voluntario',
                 'special' => null
-            ],
-            [
-                'company_id' => 1,
-                'name' => 'Producción',
-                'special' => null
-            ],
+            ]
         ]);
     }
 }
