@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-    private $company_id;
+    private $organization_id;
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->company_id = Session::get('company_id');
+            $this->organization_id = Session::get('organization_id');
             return $next($request);
         });
     }
@@ -26,8 +26,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users_company = CompanyUser::Where('company_id',$this->company_id)->With('user.person.job_position')->get();
-        return view('users.index', compact('users_company'));
+        $organization_user = OrganizationUser::Where('organization_id',$this->organization_id)->With('user.person')->get();
+        return view('users.index', compact('organization_user'));
     }
 
     /**
@@ -44,8 +44,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $job_positions = JobPosition::Where('company_id',$this->company_id)->get();
-        return view('users.new',compact('job_positions'));
+        return view('users.new');
     }
 
 

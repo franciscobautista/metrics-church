@@ -1,5 +1,5 @@
 @extends('layouts.master_app')
-@section('title') Mi Perfil @endsection
+@section('title') Configuración @endsection
 
 @section('css')
 @endsection

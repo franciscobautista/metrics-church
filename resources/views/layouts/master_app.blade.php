@@ -191,7 +191,7 @@
 							</div>
 							<div class="navi-text">
 								<div class="font-weight-bold">Mi campus</div>
-								<div class="text-muted">Configuración de tu campos</div>
+								<div class="text-muted">Configuración de tu campus</div>
 							</div>
 						</div>
 					</a>

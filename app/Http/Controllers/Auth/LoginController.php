@@ -62,7 +62,7 @@ class LoginController extends Controller
             //Update last Access
             User::where('id',\Auth::id())->update(['last_access'=>date("Y-m-d H:i:s")]);
             if(isset(\Auth::user()->organizations[0]))
-                Session::put('company_id',\Auth::user()->organizations[0]->organization_id);
+                Session::put('organization_id',\Auth::user()->organizations[0]->organization_id);
             
             //Get the associated company
             if ($request->ajax())

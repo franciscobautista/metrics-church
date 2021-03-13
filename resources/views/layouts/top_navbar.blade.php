@@ -15,22 +15,22 @@
 				<ul class="header-tabs nav align-self-end font-size-lg" role="tablist">
 					<!--begin::Item-->
 					<li class="nav-item">
-						<a href="/dashboard" class="nav-link py-4 px-6 active" data-toggle="tab" data-target="#kt_header_tab_1" role="tab">Dashboard</a>
+						<a href="/home" class="nav-link py-4 px-6 active" role="tab">Dashboard</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
 					<li class="nav-item mr-3">
-						<a href="/grafics" class="nav-link py-4 px-6" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">Gráficas</a>
+						<a href="/grafics" class="nav-link py-4 px-6"  role="tab">Gráficas</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
 					<li class="nav-item mr-3">
-						<a href="/reports" class="nav-link py-4 px-6" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">Reportes</a>
+						<a href="/reports" class="nav-link py-4 px-6" role="tab">Reportes</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
 					<li class="nav-item mr-3">
-						<a href="/inputs" class="nav-link py-4 px-6" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">Registros</a>
+						<a href="/inputs" class="nav-link py-4 px-6"  role="tab">Registros</a>
 					</li>
 					<!--end::Item-->
 				</ul>
@@ -44,7 +44,7 @@
 					<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
 						<div class="d-flex flex-column text-right pr-3">
 							<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ Auth::user()->person->first_name}}</span>
-							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">UX Designer</span>
+							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{$organization->name}}</span>
 						</div>
 						<span class="symbol symbol-35">
 							<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">{{ Auth::user()->person->lettersName}}</span>

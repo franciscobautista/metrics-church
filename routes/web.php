@@ -36,6 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users/password','UsersController@changePassword');
 
     Route::get('/settings/{section}','OrganizationsController@edit');
-
+    Route::get('/service_times','ServiceTimesController@index');
     Route::get('/company','CompaniesController@index');
 });
