@@ -9,7 +9,7 @@ class ServiceTimesController extends Controller
     public function index()
     {
         $service_times = ServiceTime::all();
-        return view('/service_times/index',compact('service_times'));
+            return view('/service_times/index',compact('service_times'));
 
     }
 }
