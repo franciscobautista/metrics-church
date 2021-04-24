@@ -65,7 +65,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Nombre</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" name="first_name" type="text" value="{{ old('first_name') }}"/>
+                                                <input class="form-control form-control-lg form-control-solid" name="first_name" type="text" value="{{ old('first_name') }}" autofocus required/>
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -87,11 +87,11 @@
                                         <!--end::Group-->
                                         <!--begin::Group-->
                                         <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">Posición </label>
+                                            <label class="col-form-label col-3 text-lg-right text-left">Rol </label>
                                             <div class="col-9">
-                                                 <select class="form-control form-control-lg form-control-solid" name="job_position_id">
-                                                    @foreach($job_positions as $item)
-                                                    <option value="{{$item->id}}" {{ old('job_position_id') == $item->id ? "selected" : '' }}>{{$item->name}}</option>
+                                                 <select class="form-control form-control-lg form-control-solid" name="role_id" required>
+                                                    @foreach($roles as $role)
+                                                    <option value="{{$role->id}}" {{ old('role_id') == $role->id ? "selected" : '' }}>{{$role->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -108,12 +108,20 @@
                                                             <i class="la la-at"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder="Email" value="{{ old('email') }}"/>
+                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder="Email" value="{{ old('email') }}" required/>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--end::Group-->
-                                     
+
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">Contraseña</label>
+                                            <div class="col-9">
+                                                <input class="form-control form-control-lg form-control-solid" type="password" name="password" value="" required />
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
 
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-success mr-2">Agregar</button>

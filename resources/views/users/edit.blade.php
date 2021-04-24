@@ -67,7 +67,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Nombre</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" name="first_name" type="text" value="{{ $user->person->first_name }}"/>
+                                                <input class="form-control form-control-lg form-control-solid" name="first_name" type="text" value="{{ $user->person->first_name }}" required/>
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -89,12 +89,23 @@
                                         <!--end::Group-->
                                         <!--begin::Group-->
                                         <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">Posición </label>
+                                            <label class="col-form-label col-3 text-lg-right text-left">Rol </label>
                                             <div class="col-9">
-                                                 <select class="form-control form-control-lg form-control-solid" name="job_position_id">
-                                                    @foreach($job_positions as $item)
-                                                    <option value="{{$item->id}}" {{ $user->person->job_position_id == $item->id ? "selected" : '' }}>{{$item->name}}</option>
+                                                 <select class="form-control form-control-lg form-control-solid" name="role_id">
+                                                    @foreach($roles as $role)
+                                                    <option value="{{$role->id}}" {{ $user->organization->rol->id == $role->id ? "selected" : '' }}>{{$role->name}}</option>
                                                     @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--end::Group-->
+                                        <!--begin::Group-->
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-3 text-lg-right text-left">Rol </label>
+                                            <div class="col-9">
+                                                 <select class="form-control form-control-lg form-control-solid" name="status">
+                                                    <option value="active" {{ $user->status == 'active' ? "selected" : '' }}>Activo</option>
+                                                    <option value="locked" {{ $user->status == 'locked' ? "selected" : '' }}>Bloqueado</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -110,7 +121,7 @@
                                                             <i class="la la-at"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder="Email" value="{{ $user->email }}"/>
+                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder="Email" value="{{ $user->email }}" required/>
                                                 </div>
                                             </div>
                                         </div>

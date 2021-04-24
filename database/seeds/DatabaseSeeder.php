@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OrganizationUsersTableSeeder::class);
         $this->command->info('OrganizationUsers table seeded!');
 
+        $this->call(PermissionsTableSeeder::class);
+        $this->command->info('Permissions table seeded!');
     }
 }
 
@@ -107,3 +109,19 @@ class RolesTableSeeder extends Seeder {
     }
 }
 
+class PermissionsTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('permissions')->insert([
+            [
+                'name' => 'Agregar empresas',
+                'slug' => 'agregar_empresas'
+            ],
+            [
+                'name' => 'Agregar recetas',
+                'slug' => 'agregar_recetas'
+            ],
+            
+        ]);
+    }
+}

@@ -69,12 +69,37 @@ class User extends Authenticatable
         $this->attributes['password'] = \Hash::make($value);
     }
 
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class)->withTimestamps();
+    }
+    public function permission()
+    {
+        return $this->permissions->flatten()->pluck('slug')->unique();
+    }
+    /*public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    public function rol()
+    {
+        return $this->hasOne(RoleUser::class);
+    }
+    public function role()
+    {
+        return $this->roles->flatten()->pluck('name')->unique();
+    }
 
+    public function saveRole($role)
+    {
+                    //->attach
+        $this->roles()->sync($role);
+    }
     public function savePermission($permission)
     {
                           //->attach
         $this->permissions()->sync($permission, false);
-    }
+    }*/
     /*
     public function hasPermission()
     {

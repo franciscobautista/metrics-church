@@ -55,7 +55,7 @@
     <!--end::Subheader-->
 
     <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
+    <div class="d-flex flex-column-fluid"> --
         <!--begin::Container-->
         <div class="container">
             <!--begin::Profile 2-->
@@ -83,19 +83,19 @@
                                         <tr class="text-uppercase">
                                             
                                             <th style="min-width: 120px">Nombre</th>
-                                            <th style="min-width: 150px">Posición</th>
+                                            <th style="min-width: 150px">Rol</th>
                                             <th style="min-width: 130px">Último acceso</th>
                                             <th class="pr-0 text-right" style="min-width: 160px">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($users_company as $item)
+                                        @foreach($organization_user as $item)
                                         <tr>
                                             <td>
                                                 <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$item->user->person->fullname}}</span>
                                             </td>
                                             <td>
-                                                <span class="label label-lg label-light-success label-inline">{{$item->user->person->job_position->name}}</span>
+                                                <span class="label label-lg label-light-success label-inline">{{$item->user->organization->rol->name}}</span>
                                             </td>
                                             <td>
                                                 <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$item->user->last_access}}</span>

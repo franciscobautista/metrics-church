@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/delete/{id}','UsersController@destroy');
     Route::get('/users/edit/{user}','UsersController@edit');
     Route::patch('/users/update/{user}','UsersController@update');
+    Route::get('/users/permissions/{user}','UsersController@permissions');
+    Route::patch('/users/permissions/{user}','UsersController@updatePermissions');    
     Route::get('/users/new','UsersController@create');
     Route::post('/users','UsersController@store');
     Route::post('/users/password','UsersController@changePassword');
