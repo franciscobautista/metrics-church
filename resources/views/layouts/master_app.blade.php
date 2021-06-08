@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"  ng-app="app">
 	<!--begin::Head-->
 	<head>
 		<base href="">
@@ -18,6 +18,9 @@
 		<!--begin::Layout Themes(used by all pages)-->
 
 		<!--begin::Page Vendors Styles(used by this page) -->
+		<link rel="stylesheet" href="/app/assets/css/plugins/sweetalert/sweetalert.css">
+ 		<link rel="stylesheet" href="/app/assets/css/plugins/toastr/angular-toastr.css" />
+ 		
         @yield('css')
 		<!--end::Page Vendors Styles -->
 
@@ -264,6 +267,20 @@
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="/app/assets/js/pages/widgets.js?v=7.0.5"></script>
 		<!--end::Page Scripts-->
+
+		<script src="/app/assets/js/angular/lib/angular.min.js"></script>
+		<script src="/app/assets/js/angular/app.js"></script>
+		<script src="/app/assets/js/angular/controllers.js"></script>
+		<script src="/app/assets/js/angular/services.js"></script>
+		<script src="/app/assets/js/angular/directives.js"></script>
+
+		<script src="/app/assets/js/angular/lib/angular-animate.js"></script>
+  		<script src="/app/assets/js/angular/lib/ui-bootstrap-tpls-1.3.3.js"></script>
+		<script src="/app/assets/js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="/app/assets/js/plugins/sweetalert/angular-sweetalert.min.js"></script>
+		<script src="/app/assets/js/plugins/toastr/angular-toastr.tpls.js"></script>
+		<script src="/app/assets/js/plugins/ngImgCrop/ng-img-crop.js"></script>
+
 	</body>
 	<!--end::Body-->
 </html>

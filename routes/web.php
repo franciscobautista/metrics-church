@@ -40,4 +40,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/settings/{section}','OrganizationsController@edit');
     Route::get('/service_times','ServiceTimesController@index');
     Route::get('/company','CompaniesController@index');
+
+    Route::get('/categories_','CategoriesController@index');
+    Route::get('/categories/delete/{id}','CategoriesController@destroy');
+    Route::post('/categories','CategoriesController@store');
+    Route::patch('/categories/{category}','CategoriesController@update');
+    Route::get('/categories/edit/{category}','CategoriesController@edit');
+    Route::view('/categories/create','categories.new');
 });

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Db\Category;
+
 use Illuminate\Http\Request;
 
-class OrganizationsController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,18 +14,22 @@ class OrganizationsController extends Controller
      */
     public function index()
     {
-        //
+        $categories  = Category::all();
+        return view('categories.index',compact('categories'));
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getCategories()
     {
-        //
+        $categories  = Category::select('id','name','description','slug')->get();
+        return response()->json($categories,200);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +39,10 @@ class OrganizationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['organization_id'] = \Session::get('organization_id');
+        Category::create($data);
+        return redirect('/settings/categories')->with('success', 'Categoría agregada correctamente!');
     }
 
     /**
@@ -43,9 +51,10 @@ class OrganizationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $category = Category::Where('slug',$slug)->first();
+        return response()->json($category,200);
     }
 
     /**
@@ -54,10 +63,9 @@ class OrganizationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($section=null)
+    public function edit(Category $category)
     {
-        $categories  = Category::all();
-        return view("organizations.edit",compact('section','categories'));
+        return view('categories.edit',compact('category'));
     }
 
     /**
@@ -67,9 +75,11 @@ class OrganizationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Category $category)
     {
-        //
+        $data = request()->all();
+        $category->update($data);
+        return redirect('/settings/categories')->with('success','Categoría actualizada correctamente');
     }
 
     /**
@@ -80,6 +90,7 @@ class OrganizationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect('/settings/categories')->with('success', 'Categoría eliminada correctamente!');
     }
 }

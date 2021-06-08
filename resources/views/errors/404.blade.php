@@ -1,88 +1,54 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-	<!-- begin::Head -->
+<html lang="es">
+	<!--begin::Head-->
 	<head>
-		<base href="/">
 		<meta charset="utf-8" />
-		<title>Error 404 | Not found</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-		<!--begin::Fonts -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
-
-		<!--end::Fonts -->
-
-		<!--begin::Page Custom Styles(used by this page) -->
-		<link href="/app/assets/css/pages/error/error-4.css" rel="stylesheet" type="text/css" />
-
-		<!--end::Page Custom Styles -->
-
-		<!--begin::Global Theme Styles(used by all pages) -->
-		<link href="/app/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="/app/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-
-		<!--end::Global Theme Styles -->
-
-		<!--begin::Layout Skins(used by all pages) -->
-
-		<!--end::Layout Skins -->
-		<link rel="icon" type="image/png" href="/landing/assets/images/favicon.png" />
+		<title>Error 404 | {{ env('APP_NAME')}}</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Custom Styles(used by this page)-->
+		<link href="/app/assets/css/pages/error/error-4.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<!--end::Page Custom Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="/app/assets/plugins/global/plugins.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<link href="/app/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<link href="/app/assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="/app/assets/images/favicon.png" />
 	</head>
-
-	<!-- end::Head -->
-
-	<!-- begin::Body -->
-	<body class="kt-page--loading-enabled kt-page--loading kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-subheader--enabled kt-subheader--transparent kt-page--loading">
-
-		<!-- begin::Page loader -->
-
-		<!-- end::Page Loader -->
-
-		<!-- begin:: Page -->
-		<div class="kt-grid kt-grid--ver kt-grid--root kt-page">
-			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-error-v4" style="background-image: url(/app/assets/media/error/bg4.jpg);">
-				<div class="kt-error_container">
-					<h1 class="kt-error_number">
-						404
-					</h1>
-					<p class="kt-error_title">
-						ERROR
-					</p>
-					<p class="kt-error_description">
-						Nothing left to do here.
-					</p>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-static page-loading">
+		<!--begin::Main-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Error-->
+			<div class="error error-4 d-flex flex-row-fluid bgi-size-cover bgi-position-center" >
+				<!--begin::Content-->
+				<div class="d-flex flex-column flex-row-fluid align-items-center align-items-md-start justify-content-md-center text-center text-md-left px-10 px-md-30 py-10 py-md-0 line-height-xs">
+					<h1 class="error-title text-success font-weight-boldest line-height-sm">404</h1>
+					<p class="error-subtitle text-success font-weight-boldest mb-10">ERROR</p>
+					<p class="display-4 text-danger font-weight-boldest mt-md-0 line-height-md">Página no encontrada.</p>
 				</div>
+				<!--end::Content-->
 			</div>
+			<!--end::Error-->
 		</div>
-
-		<!-- end:: Page -->
-
-		<!-- begin::Global Config(global config for global JS sciprts) -->
-		<script>
-			var KTAppOptions = {
-				"colors": {
-					"state": {
-						"brand": "#3d94fb",
-						"light": "#ffffff",
-						"dark": "#282a3c",
-						"primary": "#5867dd",
-						"success": "#34bfa3",
-						"info": "#3d94fb",
-						"warning": "#ffb822",
-						"danger": "#fd27eb"
-					},
-					"base": {
-						"label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
-						"shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
-					}
-				}
-			};
-		</script>
-
-		<!--end::Global Theme Bundle -->
+		<!--end::Main-->
+		<script>var HOST_URL = "https://keenthemes.com/metronic/tools/preview";</script>
+		<!--begin::Global Config(global config for global JS scripts)-->
+		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#6993FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+		<!--end::Global Config-->
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="/app/assets/plugins/global/plugins.bundle.js?v=7.0.5"></script>
+		<script src="/app/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5"></script>
+		<script src="/app/assets/js/scripts.bundle.js?v=7.0.5"></script>
+		<!--end::Global Theme Bundle-->
 	</body>
-
-	<!-- end::Body -->
+	<!--end::Body-->
 </html>

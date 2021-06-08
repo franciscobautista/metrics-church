@@ -7,7 +7,7 @@
 			<!--begin::Left-->
 			<div class="d-none d-lg-flex align-items-center mr-3">
 				<!--begin::Logo-->
-				<a href="index.html" class="mr-20">
+				<a href="/" class="mr-20">
 					<img alt="Logo" src="/app/assets/media/logos/logo-letter-9.png" class="max-h-35px" />
 				</a>
 				<!--end::Logo-->
