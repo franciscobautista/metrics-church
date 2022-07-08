@@ -22,11 +22,17 @@ class CreateTableSubcategories extends Migration
                 ->references('id')->on('organizations')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer("kind_id")->unsigned();
+            $table->integer("category_id")->unsigned()->nullable();
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
+            /*$table->integer("kind_id")->
+            /*$table->integer("kind_id")->unsigned();
             $table->foreign('kind_id')
                     ->references('id')->on('subcategory_kinds')
                     ->onDelete('cascade')
-                    ->onUpdate('cascade');
+                    ->onUpdate('cascade'); */
             $table->softDeletes();
         });
     }

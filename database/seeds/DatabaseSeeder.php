@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PermissionsTableSeeder::class);
         $this->command->info('Permissions table seeded!');
+
+        $this->call(SubcategoriesTableSeeder::class);
+        $this->command->info('Subcategories table seeded!');
     }
 }
 
@@ -55,7 +58,7 @@ class UsersTableSeeder extends Seeder {
             [
                 'person_id' => 1,
                 'email' => 'fmariobh@gmail.com',
-                'password' => \Hash::make('mario2020'),
+                'password' => \Hash::make('mario2021'),
                 'status' => 'active',
             ]
         ]);
@@ -91,17 +94,15 @@ class RolesTableSeeder extends Seeder {
     {
         DB::table('roles')->insert([
             [
-                'organization_id' => 1,
+                //'organization_id' => 1,
                 'name' => 'Admin',
                 'special' => 'all-access'
             ],
             [
-                'organization_id' => 1,
                 'name' => 'Staff',
                 'special' => null
             ],
             [
-                'organization_id' => 1,
                 'name' => 'Voluntario',
                 'special' => null
             ]
@@ -114,14 +115,34 @@ class PermissionsTableSeeder extends Seeder {
     {
         DB::table('permissions')->insert([
             [
-                'name' => 'Agregar empresas',
-                'slug' => 'agregar_empresas'
+                'name' => 'Administrar configuración de la iglesia',
+                'slug' => 'configurar_iglesia'
             ],
             [
-                'name' => 'Agregar recetas',
-                'slug' => 'agregar_recetas'
+                'name' => 'Ingresar datos',
+                'slug' => 'ingresar_datos'
             ],
+            [
+                'name' => 'Ver gráficas',
+                'slug' => 'ver_graficas'
+            ],
+            [
+                'name' => 'Crear reportes',
+                'slug' => 'crear_reportes'
+            ]
             
+        ]);
+    }
+}
+
+class SubcategoriesTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('subcategories')->insert([
+            [ 'name' => 'Asistencias','organization_id' => 1],
+            [ 'name' => 'Contribuciones','organization_id' => 1],
+            [ 'name' => 'Salvaciones','organization_id' => 1],
+            [ 'name' => 'Voluntarios','organization_id' => 1],
         ]);
     }
 }

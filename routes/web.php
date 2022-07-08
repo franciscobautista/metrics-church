@@ -47,4 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/categories/{category}','CategoriesController@update');
     Route::get('/categories/edit/{category}','CategoriesController@edit');
     Route::view('/categories/create','categories.new');
+
+    Route::get('/subcategories/delete/{id}','SubcategoriesController@destroy');
+    Route::post('/subcategories','SubcategoriesController@store');
+    Route::patch('/subcategories/{subcategory}','SubcategoriesController@update');
+    Route::get('/subcategories/edit/{subcategory}','SubcategoriesController@edit');
+    Route::get('/subcategories/create','SubcategoriesController@create');
 });

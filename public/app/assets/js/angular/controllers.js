@@ -6,7 +6,7 @@
             'SweetAlert',
             '$window',
             function($scope, SweetAlert, $window) {
-                $scope.eliminarCategoria = function(id) {
+                $scope.deleteCategory = function(id) {
                     SweetAlert.swal({
                             title: "",
                             text: "¿Deseas eliminar la categoría?",
@@ -24,6 +24,25 @@
                             }
                         });
                 }
+                $scope.deleteSubcategory = function(id) {
+                    SweetAlert.swal({
+                            title: "",
+                            text: "¿Deseas eliminar la categoría?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Si!",
+                            cancelButtonText: "No, Cancelar!",
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = "/subcategories/delete/" + id;
+                            }
+                        });
+                }
+                
 
             }
         ])

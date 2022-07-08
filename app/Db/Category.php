@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    use SoftDeletes;
-    
+    //use SoftDeletes;
     public $timestamps = false;
     protected $fillable = ['name','organization_id'];
     
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
     
 }

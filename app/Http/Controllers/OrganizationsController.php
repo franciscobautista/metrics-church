@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Db\Category;
+use App\Db\Subcategory;
 use Illuminate\Http\Request;
 
 class OrganizationsController extends Controller
@@ -56,8 +57,9 @@ class OrganizationsController extends Controller
      */
     public function edit($section=null)
     {
-        $categories  = Category::all();
-        return view("organizations.edit",compact('section','categories'));
+        $categories  =  Category::Where('organization_id',\Session::get('organization_id'))->get();
+        $subcategories  =  Subcategory::Where('organization_id',\Session::get('organization_id'))->get();
+        return view("organizations.edit",compact('section','categories','subcategories'));
     }
 
     /**
