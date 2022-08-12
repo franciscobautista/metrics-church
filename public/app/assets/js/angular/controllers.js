@@ -310,6 +310,62 @@
                 }
 
             }
+        ]).controller('ServiceTimesController', [
+            '$scope',
+            'SweetAlert',
+            '$window',
+            function($scope, SweetAlert, $window) {
+               
+                $scope.init = function () {
+                    $('#kt_datetimepicker_edit').datetimepicker({
+                        format: "hh:ii",
+                        showMeridian: true,
+                        todayHighlight: true,
+                        autoclose: true,
+                        startView: 1,
+                        minView: 0,
+                        maxView: 1,
+                        forceParse: 0,
+                        pickerPosition: 'bottom-left',  
+                    });
+                    $('#kt_datetimepicker_new').datetimepicker({
+                        format: "hh:ii",
+                        showMeridian: true,
+                        todayHighlight: true,
+                        autoclose: true,
+                        startView: 1,
+                        minView: 0,
+                        maxView: 1,
+                        forceParse: 0,
+                        pickerPosition: 'bottom-left'
+                    });
+                };
+
+                $scope.deleteServicioTimes = function(id) {
+                    SweetAlert.swal({
+                            title: "",
+                            text: "¿Deseas eliminar el servicio?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Si!",
+                            cancelButtonText: "No, Cancelar!",
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = "/servicetimes/delete/" + id;
+                            }
+                        });
+                } 
+                $scope.addServiceType = function() {
+                    $("#modaladdservicetype").modal("show");
+               } 
+                    
+                
+
+            }
         ])
 
 

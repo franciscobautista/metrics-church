@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users/password','UsersController@changePassword');
 
     Route::get('/settings/{section}','OrganizationsController@edit');
-    Route::get('/service_times','ServiceTimesController@index');
+    Route::get('/servicetimes/create','ServiceTimesController@create');
     Route::get('/company','CompaniesController@index');
 
     Route::get('/categories_','CategoriesController@index');
@@ -53,4 +53,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/subcategories/{subcategory}','SubcategoriesController@update');
     Route::get('/subcategories/edit/{subcategory}','SubcategoriesController@edit');
     Route::get('/subcategories/create','SubcategoriesController@create');
+
+    Route::post('/servicetimes/store','ServiceTimesController@store');
+    Route::get('/servicetimes/delete/{id}','ServiceTimesController@destroy');
+    Route::get('/servicetimes/edit/{service}','ServiceTimesController@edit');
+    Route::patch('/servicetimes/update/{service}','ServiceTimesController@update');
+
+    Route::post('/servicetypes/store','ServiceTypesController@store');
 });
