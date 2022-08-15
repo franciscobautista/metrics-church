@@ -21,7 +21,7 @@ class ServiceTypesController extends Controller
         if($request->ajax()) // This is what I am needing.
         {  
             $data = $request->all();
-            dd($request);
+            Log::info(print_r($request->all(), true));
             ServiceType::create(["name"=>$request->name, "description"=>$request->description,'organization_id'=> \Session::get('organization_id')]);
             $service_types  =  ServiceType::Where('organization_id',\Session::get('organization_id'))->get();
 

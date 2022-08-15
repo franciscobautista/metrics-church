@@ -372,22 +372,48 @@
                 }
 
                 $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                var data = {
-                    name : $("#type_name").val(),
-                    description : $("#type_description").val()
-                };
-                  $http.post("/servicetypes/store", data).then(function(data){ 
-                            //recargamos el select
+                // var dat = {
+                //     name : $("#type_name").val(),
+                //     description : $("#type_description").val()
+                // };
+
+                var form = new FormData();
+                form.append('name', $("#type_name").val());
+                form.append('description', $("#type_description").val());
+
+                $http.post('/servicetypes/store', form, {
+                    headers: {
+                        "Content-type": undefined
+                    },
+                    transformRequest: angular.identity
+                })
+                .success(function(data) {
+                    console.log(data)
                             var options='<option value="">Seleccionar</option>';
                             for(var i=0; i< data.services.length;i++){
                                 options+='<option value="'+data.services[i].id+'">'+data.services[i].description+'</option>';
                             }
                             $("#service_type_id").html(options);
                             $('#modaladdservicetype').modal('hide');
-                        },
-                        function(response){
-                            alert("Error al guardar el servicio.");
-                }); 
+                })
+                .error(function(response, data, status) {
+                    alert("Error al guardar el servicio.");
+                });
+
+                
+                // $http.post("/servicetypes/store", form).then(function(data){ 
+                //             //recargamos el select
+                //             console.log(data)
+                //             var options='<option value="">Seleccionar</option>';
+                //             for(var i=0; i< data.data.services.length;i++){
+                //                 options+='<option value="'+data.data.services[i].id+'">'+data.data.services[i].description+'</option>';
+                //             }
+                //             $("#service_type_id").html(options);
+                //             $('#modaladdservicetype').modal('hide');
+                //         },
+                //         function(response){
+                //             alert("Error al guardar el servicio.");
+                // }); 
                }            
                 
 
