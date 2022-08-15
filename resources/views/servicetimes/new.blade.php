@@ -82,17 +82,24 @@
                                             </div>
                                             <div class="col-3 row">
                                                 <label class="col-form-label  text-lg-right text-left">Type</label>
-                                                <div class="col-8">
-                                                    <select class="form-control form-control-lg form-control-solid" name="service_type_id" required>
+                                                <div class="col-9">
+                                                    <div class="input-group">
+                                                        
+                                                    <select class="form-control form-control-lg form-control-solid" name="service_type_id" id="service_type_id" required>
                                                         <option value="">Seleccionar</option>
                                                         @foreach($service_types as $service)
                                                         <option value="{{$service->id}}"> {{$service->name}}</option>
-                                                        @endforeach
-                                                        
+                                                        @endforeach 
                                                     </select>
+                                                    <div class="input-group-append pointer" style="cursor: pointer;">
+                                                        <span class="input-group-text"   ng-click="addServiceType()">
+                                                          + 
+                                                        </span>
+                                                    </div>
+                                                    </div>
                                                     
                                                 </div>
-                                                <label class=" btn btn-icon btn-primary  btn-sm m-2"   ng-click="addServiceType()">Add</label>
+                                                
                                             </div>
                                             
                                         </div>
@@ -100,7 +107,7 @@
                                         <div class="d-flex justify-content-between border-top pt-10">
                                             <div class="mr-2"></div>
                                             <div>
-                                                <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                                                <button type="submit"  class="btn btn-success mr-2">Guardar</button>
                                             </div>
                                         </div>
                                        
@@ -133,22 +140,22 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-            <form class="form" id="kt_form" method="POST" action="/servicetypes/store" enctype="multipart/form-data">
+        <div class="modal-body" ng-controller="ServiceTimesController">
+            <form class="form" id="kt_form"  >
                 @include('partials.errors')
                 @csrf 
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Nombre</label>
-                      <input type="text"  class="form-control form-control-lg form-control-solid"  id="name_ts" name="name" required>
+                      <input type="text"  class="form-control form-control-lg form-control-solid"  id="type_name" name="name" required>
                     </div>     
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Descripción</label>
-                        <input type="text"  class="form-control form-control-lg form-control-solid"  id="description_ts" name="description" required>
+                        <input type="text"  class="form-control form-control-lg form-control-solid"  id="type_description"  name="description" required>
                       </div>    
                       <div class="d-flex justify-content-between border-top pt-10">
                         <div class="mr-2"></div>
                         <div>
-                            <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                            <button type="button" ng-click="saveServiceTypes()" class="btn btn-success mr-2">Guardar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
                         </div>
                     </div>

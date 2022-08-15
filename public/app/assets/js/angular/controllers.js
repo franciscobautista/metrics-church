@@ -314,7 +314,8 @@
             '$scope',
             'SweetAlert',
             '$window',
-            function($scope, SweetAlert, $window) {
+            '$http',
+            function($scope, SweetAlert, $window,$http) {
                
                 $scope.init = function () {
                     $('#kt_datetimepicker_edit').datetimepicker({
@@ -361,8 +362,60 @@
                 } 
                 $scope.addServiceType = function() {
                     $("#modaladdservicetype").modal("show");
-               } 
-                    
+               }       
+               $scope.saveServiceTypes=function(){
+                var _token = $('meta[name="csrf-token"]').attr('content');
+
+                if( $("#type_name").val().trim() == ""  ||  $("#type_description").val().trim() == ""){
+                    alert("Los valores son requeridos");
+                    return false;
+                }
+
+                $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+                var data = {
+                    name : $("#type_name").val(),
+                    description : $("#type_description").val()
+                };
+                  $http.post("/servicetypes/store", data).then(function(data){ 
+                            //recargamos el select
+                            var options='<option value="">Seleccionar</option>';
+                            for(var i=0; i< data.services.length;i++){
+                                options+='<option value="'+data.services[i].id+'">'+data.services[i].description+'</option>';
+                            }
+                            $("#service_type_id").html(options);
+                            $('#modaladdservicetype').modal('hide');
+                        },
+                        function(response){
+                            alert("Error al guardar el servicio.");
+                }); 
+               }            
+                
+
+            }
+        ]).controller('ServiceTypesController', [
+            '$scope',
+            'SweetAlert',
+            '$window',
+            function($scope, SweetAlert, $window) { 
+
+                $scope.deleteServicioTypes = function(id) {
+                    SweetAlert.swal({
+                            title: "",
+                            text: "¿Deseas eliminar el servicio?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Si!",
+                            cancelButtonText: "No, Cancelar!",
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = "/servicetypes/delete/" + id;
+                            }
+                        });
+                }               
                 
 
             }

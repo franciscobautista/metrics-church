@@ -60,4 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/servicetimes/update/{service}','ServiceTimesController@update');
 
     Route::post('/servicetypes/store','ServiceTypesController@store');
+    Route::get('/servicetypes/create','ServiceTypesController@create');
+    Route::get('/servicetypes/delete/{id}','ServiceTypesController@destroy');
+    Route::get('/servicetypes/edit/{service}','ServiceTypesController@edit');
+    Route::patch('/servicetypes/update/{service}','ServiceTypesController@update');
 });

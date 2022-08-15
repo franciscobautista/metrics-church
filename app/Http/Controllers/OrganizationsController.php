@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Db\Category;
 use App\Db\Subcategory;
 use App\Db\ServiceTime;
+use App\Db\ServiceType;
 use Illuminate\Http\Request;
 
 class OrganizationsController extends Controller
@@ -61,7 +62,8 @@ class OrganizationsController extends Controller
         $categories  =  Category::Where('organization_id',\Session::get('organization_id'))->get();
         $subcategories  =  Subcategory::Where('organization_id',\Session::get('organization_id'))->get();
         $service_times  =  ServiceTime::Where('organization_id',\Session::get('organization_id'))->get();
-        return view("organizations.edit",compact('section','categories','subcategories','service_times'));
+        $service_types  =  ServiceType::Where('organization_id',\Session::get('organization_id'))->get();
+        return view("organizations.edit",compact('section','categories','subcategories','service_times','service_types'));
     }
 
     /**
