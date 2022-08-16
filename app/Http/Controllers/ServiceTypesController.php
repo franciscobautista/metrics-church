@@ -15,25 +15,24 @@ class ServiceTypesController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-      
         if($request->ajax()) // This is what I am needing.
         {  
             $data = $request->all();
-            Log::info(print_r($request->all(), true));
-            ServiceType::create(["name"=>$request->name, "description"=>$request->description,'organization_id'=> \Session::get('organization_id')]);
+            //Log::info(print_r($request->all(), true));
+            $serv=ServiceType::where("name",trim($request->name))->first();
+            if(!empty($serv)){
+                return (object)["services"=>[],"success"=>false,"message"=>"El servicio ya existe","idserv"=>0];
+            }
+            $servNew=  ServiceType::create(["name"=>$request->name, "description"=>$request->description,'organization_id'=> \Session::get('organization_id')]);
             $service_types  =  ServiceType::Where('organization_id',\Session::get('organization_id'))->get();
 
-            return (object)["services"=>$service_types,"success"=>true];
-        }else{ 
-           
+            return (object)["services"=>$service_types,"success"=>true,"idserv"=>$servNew->id,"message"=>"Servicio agregado con éxito."];
+        }else{  
              $data['organization_id'] = \Session::get('organization_id');   
             ServiceType::create($data);
             return redirect('/settings/services')->with('success', 'Typo de Servicio agregado correctamente!');
         }
-      
-        //return redirect('/servicetimes/create')->with('success', 'Typo de Servicio agregado correctamente!');
+       
     }
      /**
      * Display a listing of the resource.

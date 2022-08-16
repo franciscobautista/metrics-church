@@ -317,8 +317,9 @@
             '$http',
             function($scope, SweetAlert, $window,$http) {
                
-                $scope.init = function () {
-                    $('#kt_datetimepicker_edit').datetimepicker({
+                $scope.initEdit = function (hour) {
+                   
+                    $('#kt_datetimepicker_edit').datetimepicker({ 
                         format: "hh:ii",
                         showMeridian: true,
                         todayHighlight: true,
@@ -327,8 +328,13 @@
                         minView: 0,
                         maxView: 1,
                         forceParse: 0,
-                        pickerPosition: 'bottom-left',  
-                    });
+                        pickerPosition: 'bottom-left', 
+                        value:new Date()
+                    });  
+                    $('#kt_datetimepicker_edit').val(hour); 
+                };
+                $scope.initNew = function () { 
+
                     $('#kt_datetimepicker_new').datetimepicker({
                         format: "hh:ii",
                         showMeridian: true,
@@ -341,7 +347,6 @@
                         pickerPosition: 'bottom-left'
                     });
                 };
-
                 $scope.deleteServicioTimes = function(id) {
                     SweetAlert.swal({
                             title: "",
@@ -371,12 +376,7 @@
                     return false;
                 }
 
-                $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                // var dat = {
-                //     name : $("#type_name").val(),
-                //     description : $("#type_description").val()
-                // };
-
+                $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"; 
                 var form = new FormData();
                 form.append('name', $("#type_name").val());
                 form.append('description', $("#type_description").val());
@@ -387,33 +387,24 @@
                     },
                     transformRequest: angular.identity
                 })
-                .success(function(data) {
-                    console.log(data)
-                            var options='<option value="">Seleccionar</option>';
-                            for(var i=0; i< data.services.length;i++){
-                                options+='<option value="'+data.services[i].id+'">'+data.services[i].description+'</option>';
-                            }
-                            $("#service_type_id").html(options);
-                            $('#modaladdservicetype').modal('hide');
+                .success(function(data) { 
+                    if(data.success == true ){
+                        var selected="";
+                        var options='<option value="">Seleccionar</option>';
+                        for(var i=0; i< data.services.length;i++){
+                            var selected=data.services[i].id == data.idserv ? "selected" : "";
+                            options+='<option value="'+data.services[i].id+'" '+selected+'  >'+data.services[i].name+'</option>';
+                        }
+                        $("#service_type_id").html(options);
+                        $('#modaladdservicetype').modal('hide');
+                    }else{
+                        alert(data.message);
+                    }
+                  
                 })
                 .error(function(response, data, status) {
                     alert("Error al guardar el servicio.");
-                });
-
-                
-                // $http.post("/servicetypes/store", form).then(function(data){ 
-                //             //recargamos el select
-                //             console.log(data)
-                //             var options='<option value="">Seleccionar</option>';
-                //             for(var i=0; i< data.data.services.length;i++){
-                //                 options+='<option value="'+data.data.services[i].id+'">'+data.data.services[i].description+'</option>';
-                //             }
-                //             $("#service_type_id").html(options);
-                //             $('#modaladdservicetype').modal('hide');
-                //         },
-                //         function(response){
-                //             alert("Error al guardar el servicio.");
-                // }); 
+                }); 
                }            
                 
 

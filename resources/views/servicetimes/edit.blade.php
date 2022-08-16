@@ -30,7 +30,7 @@
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
-        <div class="container"  ng-controller="ServiceTimesController" ng-init="init()">
+        <div class="container"  ng-controller="ServiceTimesController" ng-init="initEdit('{{$service->hour}}')">
 
             <div class="card card-custom gutter-b">
                 <div class="card-body">  
@@ -69,15 +69,15 @@
                                             </div>
                                             <div class="col-3 row">
                                                 <label class="col-form-label   text-lg-right text-left">Hora</label>
-                                                <div class="col-9">
+                                                <div class="col-9"> 
                                                     <div class="input-group date">
-														<input type="text" class="form-control form-control-solid" placeholder="Select time" id="kt_datetimepicker_edit" name="hour"  required >
+														<input type="text" class="form-control form-control-solid" placeholder="Select time" id="kt_datetimepicker_edit" name="hour"    required >
 														<div class="input-group-append">
 															<span class="input-group-text">
 																<i class="la la-calendar glyphicon-th"></i>
 															</span>
 														</div>
-													</div> 
+													</div>  
                                                 </div>
                                             </div>
                                             <div class="col-3 row">

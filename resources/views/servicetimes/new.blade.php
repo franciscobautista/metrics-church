@@ -28,7 +28,7 @@
     </div>
     <!--end::Subheader-->
     <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid" ng-controller="ServiceTimesController" ng-init="init()">
+    <div class="d-flex flex-column-fluid" ng-controller="ServiceTimesController" ng-init="initNew()">
         <!--begin::Container-->
         <div class="container">
 
